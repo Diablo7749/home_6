@@ -44,8 +44,9 @@ class Record:
     def edit_phone(self, old_phone, new_phone):
         phone_obj = self.find_phone(old_phone)
         if phone_obj:
+            new_phone_obj = Phone(new_phone)  # Спочатку перевіряємо новий номер
             self.remove_phone(old_phone)
-            self.add_phone(new_phone)
+            self.phones.append(new_phone_obj)
         else:
             raise ValueError("Phone number not found.")
     
@@ -135,3 +136,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
